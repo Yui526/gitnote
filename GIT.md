@@ -380,6 +380,20 @@ REBASE
 		  squash 4
 		  pick      5
 
+### 快速修正歷史版本
+
+假設目前commit有
+4.update js
+3.update css
+2.add
+1.init
+想修正3.update css , 此時就可以先進行檔案修正 , 再add->並用git commit --fixup=3
+後續再透過git rebase -i --autosquash 2
+將此fixup併回3.
+
+- git commit --fixup=xxx(版本id)
+- git rebase -i --autosquash xxx(版本id)
+
 ## 標籤
 
 ### 查詢

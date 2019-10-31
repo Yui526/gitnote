@@ -380,17 +380,53 @@ REBASE
 		  squash 4
 		  pick      5
 
-## --no-ff快轉機制關閉
-no fast-forward
+## 標籤
 
-### no
+### 查詢
 
-- 意義上完全不同的分支
+- git tag
+- git tag -n(含訊息)
 
-### yes
+### 種類
 
-- 遠端&本地分支
-origin/master  master
+- 輕量型lightweight
+
+  主要針對暫存物件 / 特定物件做標示用途
+
+	- 新增
+
+		- git tag xxx(標籤名稱) xxx(版本id)
+
+	- 刪除
+
+		- git tag -d xxx(標籤名稱)
+		- .git/refs/tags -> 直接刪
+
+- 標註型annotated
+
+  意義上是用來做RELEASE , 因可呈現自己的訊息 , 故可在訊息留下發行文件等資料
+
+	- 新增
+
+		- git tag -a xxx(標籤名稱) xxx(版本id)
+
+### 應用
+
+- 推送標籤
+
+	- git push --tags
+
+- 刪除遠端標籤
+
+	- git push --delete xxx(標籤名稱)
+
+- 同步遠端及本地標籤
+
+	- git fetch --prune --prune-tags
+
+- 取出特定標籤之原始碼
+
+	- git checkout -b xxx(分支名稱) xxx(標籤名稱)
 
 ## 索引
 (Index)
@@ -433,5 +469,17 @@ remotes/origin/master
 ### 遠端分支
 origin/master
 .git/refs/remotes/origin
+
+## --no-ff快轉機制關閉
+no fast-forward
+
+### no
+
+- 意義上完全不同的分支
+
+### yes
+
+- 遠端&本地分支
+origin/master  master
 
 *XMind: ZEN - Trial Version*
